@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    data-password: ${DB_PASSWORD}
+    data-username: ${DB_USERNAME}
+    driver-class-name: org.postgresql.ds.PGSimpleDataSource
+    url: jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${DB_DATABASE}
+    hikari:
+      connection-timeout: 3000
+      connection-test-query: select 1
+      maximum-pool-size: 5
+      pool-name: mtek-pool
+  jpa:
+    generate-ddl: false
+    show-sql: true
