@@ -5,8 +5,28 @@ on:
 jobs:
   vm:
     runs-on: ubuntu-latest
+    services:
+      postgres: 
+        image: postgres:12-alpine
+        ports: 
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: hackme
+          POSTGRES_USER: mktec
+          POSTGRES_DB: mktec
     steps:
+      - uses: action/setup-java@v1
+        with:
+          java-version: '11'
+          java-package: jdk
       - uses: actions/checkout@v1
       - run: uname -a && java -version && mvn -version
+        env:
+          DB_PORT: 5432
+          DB_HOSTNAME: localhost
+          DB_DATABASE: mktec
+          DB_USERNAME: mktec
+          DB_PASSWORD: hackme
+      - run: mvn run
         
         
