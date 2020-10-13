@@ -1,0 +1,11 @@
+#action tests
+on: 
+  schedule:
+    - cron: "*/3 * * * *"
+jobs:
+  vm:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls /
+      - uses: actions/checkout@v1
+        
