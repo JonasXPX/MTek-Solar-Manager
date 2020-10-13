@@ -3,7 +3,7 @@ on:
   push:
     branches: [master]
 jobs:
-  vm:
+  build:
     runs-on: ubuntu-latest
     services:
       postgres: 
@@ -15,18 +15,22 @@ jobs:
           POSTGRES_USER: mktec
           POSTGRES_DB: mktec
     steps:
-      - uses: actions/setup-java@v1
+      - name: Define java version
+        uses: actions/setup-java@v1
         with:
           java-version: '11'
           java-package: jdk
       - uses: actions/checkout@v1
-      - run: uname -a && java -version && mvn -version
+      - name: Display versions
+        run: uname -a && java -version && mvn -version
+      - name: Define system environments
         env:
           DB_PORT: 5432
           DB_HOSTNAME: localhost
           DB_DATABASE: mktec
           DB_USERNAME: mktec
           DB_PASSWORD: hackme
-      - run: mvn test
+      - name: Run tests
+        run: mvn test
         
         
