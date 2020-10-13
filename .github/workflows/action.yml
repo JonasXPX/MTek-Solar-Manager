@@ -27,6 +27,6 @@ jobs:
           DB_DATABASE: mktec
           DB_USERNAME: mktec
           DB_PASSWORD: hackme
-      - run: mvn run
+      - run: mvn test
         
         
