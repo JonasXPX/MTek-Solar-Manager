@@ -6,6 +6,7 @@ jobs:
   vm:
     runs-on: ubuntu-latest
     steps:
-      - run: ls /
       - uses: actions/checkout@v1
+      - run: ls -lta .
+        
         
