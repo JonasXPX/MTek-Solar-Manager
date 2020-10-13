@@ -1,7 +1,7 @@
 #action tests
-on: 
-  schedule:
-    - cron: "*/3 * * * *"
+on:
+  push:
+    branches: [master]
 jobs:
   vm:
     runs-on: ubuntu-latest
