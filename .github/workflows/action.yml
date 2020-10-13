@@ -23,7 +23,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: Display versions
         run: uname -a && java -version && mvn -version
-      - name: Define system environments
         env:
           DB_PORT: 5432
           DB_HOSTNAME: localhost
