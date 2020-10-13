@@ -1,0 +1,32 @@
+version: "3.0"
+services:
+  postgresql-database:
+    image: postgres:12-alpine
+    container_name: postgresql-database
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: hackme
+      POSTGRES_USER: mktec
+      POSTGRES_DB: mktec
+    ports:
+      - 5432:5432
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
+  mktec-api:
+    build:
+      context: .
+      args:
+        db_password: hackme
+        db_username: mktec
+        db_hostname: postgresql-database
+        db_port: 5432
+        db_database: mktec
+    container_name: mktec-api
+    links:
+      - postgresql-database
+    ports:
+      - 8080:8080
+networks:
+  default:
+    external:
+      name: mktec
