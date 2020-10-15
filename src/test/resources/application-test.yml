@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    data-password: ${DB_PASSWORD:hackme}
+    data-username: ${DB_USERNAME:mktec}
+    url: jdbc:postgresql://${DB_HOSTNAME:localhost}:${DB_PORT:5432}/${DB_DATABASE:mktec}
+    hikari:
+      connection-timeout: 3000
+      connection-test-query: select 1
+      maximum-pool-size: 5
+      pool-name: mtek-pool
+      password: ${DB_PASSWORD:hackme}
+      username: ${DB_USERNAME:mktec}
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
