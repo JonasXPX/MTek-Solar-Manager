@@ -17,11 +17,13 @@ import javax.persistence.Id;
 public class TechnicalUser implements Model {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String email;
+  private String username;
 
   private Boolean active;
+
+  private String password;
 
 }

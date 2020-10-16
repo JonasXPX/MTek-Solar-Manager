@@ -1,6 +1,6 @@
 package br.uniamerica.mtecksolar.MTeck.Solar;
 
-import br.uniamerica.mtecksolar.MTeck.Solar.user.domain.TechnicalUserDto;
+import br.uniamerica.mtecksolar.MTeck.Solar.user.TechnicalUser;
 import br.uniamerica.mtecksolar.MTeck.Solar.user.service.TechnicalUserService;
 import br.uniamerica.mtecksolar.MTeck.Solar.user.web.TechnicalUserController;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,9 +26,9 @@ class MTeckSolarApplicationTests {
 
   @Test
   void shouldTestUserControllerResponseFromSave() throws Exception {
-    var technicalUser = TechnicalUserDto.builder().email("technical-user@hotmail.com").password("hackme").build();
+    var technicalUser = TechnicalUser.builder().username("technical-user@hotmail.com").password("hackme").build();
     mockMvc.perform(
-            post("/user", technicalUser)
+            post("/user/", technicalUser)
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(asJsonString(technicalUser)))
             .andDo(print()).andExpect(status().isOk());
