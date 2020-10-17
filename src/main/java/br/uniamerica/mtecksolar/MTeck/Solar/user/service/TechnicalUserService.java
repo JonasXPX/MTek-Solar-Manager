@@ -14,8 +14,8 @@ public class TechnicalUserService extends DefaultService<TechnicalUser> {
   private final BCryptPasswordEncoder bCryptPasswordEncoder;
   private final TechnialUserRepository technialUserRepository;
 
-  public void signUp(TechnicalUser technicalUser) {
+  public TechnicalUser signUp(TechnicalUser technicalUser) {
     technicalUser.setPassword(bCryptPasswordEncoder.encode(technicalUser.getPassword()));
-    technialUserRepository.save(technicalUser);
+    return technialUserRepository.save(technicalUser);
   }
 }
