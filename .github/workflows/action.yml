@@ -13,7 +13,7 @@ jobs:
         env:
           POSTGRES_PASSWORD: hackme
           POSTGRES_USER: mktec
-          POSTGRES_DB: mktec
+          POSTGRES_DB: mktec_test
     steps:
       - name: Define java version
         uses: actions/setup-java@v1
@@ -26,7 +26,7 @@ jobs:
         env:
           DB_PORT: 5432
           DB_HOSTNAME: localhost
-          DB_DATABASE: mktec
+          DB_DATABASE: mktec_test
           DB_USERNAME: mktec
           DB_PASSWORD: hackme
       - name: Run tests
