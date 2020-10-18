@@ -4,6 +4,7 @@ WORKDIR app
 COPY ./target/mktec.jar /app
 
 EXPOSE 8080
+EXPOSE 5005
 
 ARG db_hostname
 ARG db_username
@@ -18,9 +19,10 @@ ENV DB_DATABASE=${db_database}
 ENV Db_PASSWORD=${db_password}
 
 CMD [ \
-    "java", \
-    "-Xms128m", \
-    "-Xmx256m",\
-    "-jar",\
-     "mktec.jar" \
+      "java", \
+      "-Xms128m", \
+      "-Xmx256m",\
+      "-Xdebug", "-Xnoagent", "-Xrunjdwp:transport=dt_socket,address=*:5005,server=y,suspend=n", \
+      "-jar",\
+      "mktec.jar" \
 ]
